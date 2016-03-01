@@ -4,6 +4,7 @@ This cookbook provides a `trusted_certificate` LWRP to manage adding SSL/TLS cer
 ## Requirements
 ### Platforms
 - Debian/Ubuntu
+- RHEL 6+
 
 ### Chef
 - Chef 11+
