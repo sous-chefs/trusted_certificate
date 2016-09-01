@@ -1,6 +1,6 @@
-# trusted-certificate cookbook
+# trusted_certificate cookbook
 
-[![Build Status](https://travis-ci.org/chef-cookbooks/trusted-certificate.svg?branch=master)](https://travis-ci.org/chef-cookbooks/trusted-certificate) [![Cookbook Version](https://img.shields.io/cookbook/v/trusted-certificate.svg)](https://supermarket.chef.io/cookbooks/trusted-certificate)
+[![Build Status](https://travis-ci.org/chef-cookbooks/trusted_certificate.svg?branch=master)](https://travis-ci.org/chef-cookbooks/trusted_certificate) [![Cookbook Version](https://img.shields.io/cookbook/v/trusted_certificate.svg)](https://supermarket.chef.io/cookbooks/trusted_certificate)
 
 This cookbook provides a `trusted_certificate` custom resource (LWRP) to manage adding SSL/TLS certificates to the operating system's trust store.
 
@@ -29,7 +29,7 @@ Installs the `ca-certificates` package that provides the certificate trust mecha
 
 **Author:** Cookbook Engineering Team ([cookbooks@chef.io](mailto:cookbooks@chef.io))
 
-**Copyright:** 2008-2015, Chef Software, Inc.
+**Copyright:** 2008-2016, Chef Software, Inc.
 
 ```
 Licensed under the Apache License, Version 2.0 (the "License");
