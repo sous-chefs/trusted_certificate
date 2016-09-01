@@ -11,3 +11,5 @@ supports 'ubuntu'
 
 source_url 'https://github.com/chef-cookbooks/trusted_certificate' if respond_to?(:source_url)
 issues_url 'https://github.com/chef-cookbooks/trusted_certificate/issues' if respond_to?(:issues_url)
+
+chef_version '>= 11' if respond_to?(:chef_version)
