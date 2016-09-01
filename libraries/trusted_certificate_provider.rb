@@ -12,19 +12,18 @@ class Chef
 
       action :create do
         converge_by "Add #{new_resource.name} to OS trust store" do
-          execute 'update-ca-certificates' do
+          execute 'update trusted certificates' do
+            command platform_family?('debian') ? 'update-ca-certificates' : 'update-ca-trust extract'
             action :nothing
           end
 
-          certificate_path = '/usr/local/share/ca-certificates/' \
-                             "#{new_resource.certificate_name}.crt"
+          certificate_path =  platform_family?('debian') ? '/usr/local/share/ca-certificates' : '/etc/pki/ca-trust/source/anchors'
 
-          file certificate_path do
+          file "#{certificate_path}/#{new_resource.certificate_name}.crt" do
             content new_resource.content
-            owner 'root'
-            group 'staff'
+            group 'staff' if platform_family?('debian')
             action :create
-            notifies :run, 'execute[update-ca-certificates]'
+            notifies :run, 'execute[update trusted certificates]'
           end
         end
       end
