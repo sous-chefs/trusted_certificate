@@ -4,6 +4,6 @@ metadata
 
 group :integration do
   cookbook 'yum'
-  cookbook 'apt'
   cookbook 'example', path: 'spec/fixtures/cookbooks/example'
+  cookbook 'test', path: 'test/fixtures/cookbooks/test'
 end
