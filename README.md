@@ -48,6 +48,12 @@ trusted_certificate 'my_corp' do
 end
 ```
 
+## Testing
+
+This cookbook has the following [ChefSpec custom matcher](https://github.com/sethvargo/chefspec#packaging-custom-matchers) defined:
+
+- create_trusted_certificate
+
 ## License & Authors
 
 **Author:** Cookbook Engineering Team ([cookbooks@chef.io](mailto:cookbooks@chef.io))
