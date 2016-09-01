@@ -25,6 +25,29 @@ This cookbook provides a `trusted_certificate` custom resource (LWRP) to manage 
 
 Installs the `ca-certificates` package that provides the certificate trust mechanism.
 
+## Resources (providers)
+
+### trusted_certificate
+
+Adds a certificate to the operating system's trust store.
+
+#### properties
+
+- `content`: The contents of the cert to add
+
+#### actions
+
+- `create`
+
+#### example
+
+```ruby
+trusted_certificate 'my_corp' do
+  action :create
+  content 'THIS_WOULD_BE_THE_WHOLE_CERT_CONTENTS'
+end
+```
+
 ## License & Authors
 
 **Author:** Cookbook Engineering Team ([cookbooks@chef.io](mailto:cookbooks@chef.io))
