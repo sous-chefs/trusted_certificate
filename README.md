@@ -13,7 +13,7 @@ This cookbook provides a `trusted_certificate` custom resource (LWRP) to manage 
 
 ### Chef
 
-- Chef 11+
+- Chef 12.1+
 
 ### Cookbooks
 
@@ -34,6 +34,7 @@ Adds a certificate to the operating system's trust store.
 #### properties
 
 - `content`: The contents of the cert to add
+- `certificate_name`: The filename of the cert
 
 #### actions
 
