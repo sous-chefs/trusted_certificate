@@ -2,9 +2,9 @@ name 'trusted_certificate'
 maintainer 'Chef Software, Inc.'
 maintainer_email 'cookbooks@chef.io'
 license 'Apache 2.0'
-description 'Manages adding and removing certificates from the OS trust store'
+description 'Manages adding certificates to the OS trust store'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version '0.1.0'
+version '1.0.0'
 
 %w(ubuntu debian redhat centos scientific oracle amazon zlinux).each do |os|
   supports os
