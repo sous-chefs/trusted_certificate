@@ -1,6 +1,6 @@
 name 'trusted_certificate'
-maintainer 'Chef Delivery Team'
-maintainer_email 'delivery-team@chef.io'
+maintainer 'Chef Software, Inc.'
+maintainer_email 'cookbooks@chef.io'
 license 'Apache 2.0'
 description 'Manages adding and removing certificates from the OS trust store'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
