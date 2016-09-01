@@ -21,6 +21,7 @@ class Chef
 
           file "#{certificate_path}/#{new_resource.certificate_name}.crt" do
             content new_resource.content
+            owner 'root'
             group 'staff' if platform_family?('debian')
             action :create
             notifies :run, 'execute[update trusted certificates]'
