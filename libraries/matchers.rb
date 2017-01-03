@@ -21,11 +21,11 @@
 
 if defined?(ChefSpec)
   #################
-  # trusted_certicate
+  # trusted_certificate
   #################
-  ChefSpec.define_matcher :trusted_certicate
+  ChefSpec.define_matcher :trusted_certificate
 
-  def create_trusted_certicate(resource_name)
-    ChefSpec::Matchers::ResourceMatcher.new(:trusted_certicate, :create, resource_name)
+  def create_trusted_certificate(resource_name)
+    ChefSpec::Matchers::ResourceMatcher.new(:trusted_certificate, :create, resource_name)
   end
 end
