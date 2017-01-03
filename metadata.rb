@@ -6,11 +6,12 @@ description 'Manages adding certificates to the OS trust store'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version '1.0.1'
 
-%w(ubuntu debian redhat centos scientific oracle amazon zlinux).each do |os|
+depends 'compat_resource', '>= 12.16.3'
+
+%w(ubuntu debian redhat centos suse opensuse opensuseleap scientific oracle amazon zlinux).each do |os|
   supports os
 end
 
 source_url 'https://github.com/chef-cookbooks/trusted_certificate'
 issues_url 'https://github.com/chef-cookbooks/trusted_certificate/issues'
-
-chef_version '>= 12.1'
+chef_version '>= 12.1' if respond_to?(:chef_version)
