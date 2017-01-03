@@ -18,6 +18,9 @@ class Chef
           end
 
           certificate_path =  platform_family?('debian') ? '/usr/local/share/ca-certificates' : '/etc/pki/ca-trust/source/anchors'
+          if platform_family?('arch')
+            certificate_path = '/etc/ca-certificates/trust-source/anchors/'
+          end
 
           file "#{certificate_path}/#{new_resource.certificate_name}.crt" do
             content new_resource.content

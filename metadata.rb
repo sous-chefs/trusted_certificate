@@ -6,7 +6,7 @@ description 'Manages adding certificates to the OS trust store'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version '1.0.0'
 
-%w(ubuntu debian redhat centos scientific oracle amazon zlinux).each do |os|
+%w(ubuntu debian redhat centos scientific oracle amazon zlinux arch).each do |os|
   supports os
 end
 
