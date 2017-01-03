@@ -25,11 +25,9 @@ provides :trusted_certificate
 action :create do
   converge_by "Add #{new_resource.name} to OS trust store" do
     execute 'update trusted certificates' do
-      command platform_family?('debian') ? 'update-ca-certificates' : 'update-ca-trust extract'
+      command platform_family?('debian', 'suse') ? 'update-ca-certificates' : 'update-ca-trust extract'
       action :nothing
     end
-
-    certificate_path =  platform_family?('debian') ? '/usr/local/share/ca-certificates' : '/etc/pki/ca-trust/source/anchors'
 
     file "#{certificate_path}/#{new_resource.certificate_name}.crt" do
       content new_resource.content
@@ -37,6 +35,19 @@ action :create do
       group 'staff' if platform_family?('debian')
       action :create
       notifies :run, 'execute[update trusted certificates]'
+    end
+  end
+end
+
+action_class do
+  def certificate_path
+    case node['platform_family']
+    when 'debian'
+      '/usr/local/share/ca-certificates'
+    when 'suse'
+      '/etc/pki/trust/anchors/'
+    else # probably RHEL
+      '/etc/pki/ca-trust/source/anchors'
     end
   end
 end
