@@ -2,6 +2,11 @@
 
 This file is used to list changes made in each version of the trusted_certificate cookbook.
 
+## 2.0.0 (2017-01-04)
+
+- Convert the LWRP to a custom resource
+- Add support for opensuse
+
 ## 1.0.1 (2017-01-03)
 
 - Remove Chef 11 compatibility in metadata
