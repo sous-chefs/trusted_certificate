@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of the trusted_certificate cookbook.
 
+## 3.0.0 (2017-02-15)
+
+- Require Chef 12.5+ and remove compat_resource
+
 ## 2.0.0 (2017-01-04)
 
 - Convert the LWRP to a custom resource
