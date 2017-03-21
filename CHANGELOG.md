@@ -2,6 +2,11 @@
 
 This file is used to list changes made in each version of the trusted_certificate cookbook.
 
+## 3.0.1 (2017-03-21)
+
+- Test with Local Delivery instead of Rake
+- Fix method missing errors on older Chef clients
+
 ## 3.0.0 (2017-02-15)
 
 - Require Chef 12.5+ and remove compat_resource
