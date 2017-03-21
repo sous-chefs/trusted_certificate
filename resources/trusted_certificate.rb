@@ -39,7 +39,7 @@ action :create do
   end
 end
 
-action_class do
+action_class.class_eval do
   def certificate_path
     case node['platform_family']
     when 'debian'
