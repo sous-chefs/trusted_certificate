@@ -13,7 +13,7 @@ This cookbook provides a `trusted_certificate` custom resource (LWRP) to manage 
 
 ### Chef
 
-- Chef 12.5+
+- Chef 12.7+
 
 ### Cookbooks
 
