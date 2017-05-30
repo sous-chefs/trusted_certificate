@@ -2,6 +2,11 @@
 
 This file is used to list changes made in each version of the trusted_certificate cookbook.
 
+## 3.1.0 (2017-05-30)
+
+- name_attribute -> name_property in the custom resource
+- Remove class_eval usage and require Chef 12.7+ to resolve failures on later Chef 12 releases
+
 ## 3.0.1 (2017-03-21)
 
 - Test with Local Delivery instead of Rake
