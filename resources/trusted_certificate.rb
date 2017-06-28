@@ -23,19 +23,17 @@ property :content, String, required: true
 provides :trusted_certificate
 
 action :create do
-  converge_by "Add #{new_resource.name} to OS trust store" do
-    execute 'update trusted certificates' do
-      command platform_family?('debian', 'suse') ? 'update-ca-certificates' : 'update-ca-trust extract'
-      action :nothing
-    end
+  execute 'update trusted certificates' do
+    command platform_family?('debian', 'suse') ? 'update-ca-certificates' : 'update-ca-trust extract'
+    action :nothing
+  end
 
-    file "#{certificate_path}/#{new_resource.certificate_name}.crt" do
-      content new_resource.content
-      owner 'root'
-      group 'staff' if platform_family?('debian')
-      action :create
-      notifies :run, 'execute[update trusted certificates]'
-    end
+  file "#{certificate_path}/#{new_resource.certificate_name}.crt" do
+    content new_resource.content
+    owner 'root'
+    group 'staff' if platform_family?('debian')
+    action :create
+    notifies :run, 'execute[update trusted certificates]'
   end
 end
 
