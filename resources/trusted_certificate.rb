@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-property :certificate_name, String, name_property: true, required: true
+property :certificate_name, String, name_property: true
 property :content, String, required: true
 
 provides :trusted_certificate
