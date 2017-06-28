@@ -17,8 +17,6 @@ describe 'example::default' do
   context 'debian platform family' do
     let(:chef_run) do
       ChefSpec::SoloRunner.new(
-        platform: 'ubuntu',
-        version: '16.04',
         step_into: 'trusted_certificate'
       ).converge(described_recipe)
     end
@@ -43,7 +41,7 @@ describe 'example::default' do
     let(:chef_run) do
       ChefSpec::SoloRunner.new(
         platform: 'centos',
-        version: '6.8',
+        version: '6.9',
         step_into: 'trusted_certificate'
       ).converge(described_recipe)
     end
