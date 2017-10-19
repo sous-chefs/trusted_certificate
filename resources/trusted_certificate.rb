@@ -28,6 +28,14 @@ action :create do
     action :nothing
   end
 
+  directory certificate_path do
+    recursive true
+    mode '755'
+    owner 'root'
+    group 'staff' if platform_family?('debian')
+    action :create
+  end
+
   file "#{certificate_path}/#{new_resource.certificate_name}.crt" do
     content new_resource.content
     owner 'root'
