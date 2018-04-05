@@ -1,4 +1,4 @@
-# Install two certificates into the OS certificate store from a data_bag
+# Delete two certificates from the OS certificate store
 
 trusted_certificate 'Company Custom CA' do
   certificate_name 'custom_root_ca'

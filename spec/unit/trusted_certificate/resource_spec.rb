@@ -63,7 +63,6 @@ describe 'example::default' do
   end
 end
 
-
 describe 'example::delete' do
   context 'debian platform family' do
     let(:chef_run) do
