@@ -39,6 +39,7 @@ Adds a certificate to the operating system's trust store.
 #### actions
 
 - `create`
+- `delete`
 
 #### example
 
@@ -49,6 +50,11 @@ trusted_certificate 'my_corp' do
 end
 ```
 
+```ruby
+trusted_certificate 'my_corp' do
+  action :delete
+end
+```
 ## Testing
 
 This cookbook has the following [ChefSpec custom matcher](https://github.com/sethvargo/chefspec#packaging-custom-matchers) defined:
