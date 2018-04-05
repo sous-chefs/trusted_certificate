@@ -37,6 +37,18 @@ action :create do
   end
 end
 
+action :delete do
+  execute 'update trusted certificates' do
+    command platform_family?('debian', 'suse') ? 'update-ca-certificates' : 'update-ca-trust extract'
+    action :nothing
+  end
+
+  file "#{certificate_path}/#{new_resource.certificate_name}.crt" do
+    action :delete
+    notifies :run, 'execute[update trusted certificates]'
+  end
+end
+
 action_class do
   def certificate_path
     case node['platform_family']
