@@ -62,3 +62,49 @@ describe 'example::default' do
     end
   end
 end
+
+describe 'example::delete' do
+  context 'debian platform family' do
+    let(:chef_run) do
+      ChefSpec::SoloRunner.new(
+        step_into: 'trusted_certificate'
+      ).converge(described_recipe)
+    end
+
+    it 'removes certificate from disk' do
+      expect(chef_run).to delete_file('/usr/local/share/ca-certificates/custom_root_ca.crt')
+      expect(chef_run).to delete_file('/usr/local/share/ca-certificates/self_signed_example.crt')
+    end
+
+    it 'updates the OS trust store' do
+      execute = chef_run.execute('update trusted certificates')
+      expect(execute).to do_nothing
+
+      file = chef_run.file('/usr/local/share/ca-certificates/custom_root_ca.crt')
+      expect(file).to notify('execute[update trusted certificates]').to(:run).delayed
+    end
+  end
+
+  context 'rhel platform family' do
+    let(:chef_run) do
+      ChefSpec::SoloRunner.new(
+        platform: 'centos',
+        version: '6.9',
+        step_into: 'trusted_certificate'
+      ).converge(described_recipe)
+    end
+
+    it 'removes certificate from disk' do
+      expect(chef_run).to delete_file('/etc/pki/ca-trust/source/anchors/custom_root_ca.crt')
+      expect(chef_run).to delete_file('/etc/pki/ca-trust/source/anchors/self_signed_example.crt')
+    end
+
+    it 'updates the OS trust store' do
+      execute = chef_run.execute('update trusted certificates')
+      expect(execute).to do_nothing
+
+      file = chef_run.file('/etc/pki/ca-trust/source/anchors/custom_root_ca.crt')
+      expect(file).to notify('execute[update trusted certificates]').to(:run).delayed
+    end
+  end
+end
