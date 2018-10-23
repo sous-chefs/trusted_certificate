@@ -33,7 +33,7 @@ action :create do
     cookbook_file "#{certificate_path}/#{new_resource.certificate_name}.crt" do
       sensitive new_resource.sensitive if new_resource.sensitive
       source src[-1]
-      cookbook (src.length == 2 ? src[0] : cookbook_name)
+      cookbook src.length == 2 ? src[0] : cookbook_name
       owner 'root'
       group 'staff' if platform_family?('debian')
       notifies :run, 'execute[update trusted certificates]'

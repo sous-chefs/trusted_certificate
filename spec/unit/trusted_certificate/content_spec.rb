@@ -39,29 +39,29 @@ describe 'test::content' do
     end
   end
 
-   context 'stepping into chef_file' do
-     it 'correctly creates certificates from cookbook_files' do
-       expect(centos_7).to create_cookbook_file('/etc/pki/ca-trust/source/anchors/cookbook_file_content.crt')
-         .with(
-           source: 'testfile',
-           cookbook: 'test',
-           user: 'root',
-         )
-     end
-     it 'correctly certificates from remote_files' do
-       expect(centos_7).to create_remote_file('/etc/pki/ca-trust/source/anchors/remote_content.crt')
-         .with(
-           source: 'https://www.example.com/test',
-           user: 'root',
-         )
-     end
-     it 'correctly creates certificates from inline content' do
-       expect(centos_7).to create_file('/etc/pki/ca-trust/source/anchors/inline_content.crt')
-         .with(
-           content: "--------------BEGIN CERTIFICATE---------------------\nfobarbizabaz",
-           user: 'root',
-         )
-       expect(centos_7).to render_file('/etc/pki/ca-trust/source/anchors/inline_content.crt').with_content("--------------BEGIN CERTIFICATE---------------------\nfobarbizabaz")
-     end 
-   end
+  context 'stepping into chef_file' do
+    it 'correctly creates certificates from cookbook_files' do
+      expect(centos_7).to create_cookbook_file('/etc/pki/ca-trust/source/anchors/cookbook_file_content.crt')
+        .with(
+          source: 'testfile',
+          cookbook: 'test',
+          user: 'root'
+        )
+    end
+    it 'correctly certificates from remote_files' do
+      expect(centos_7).to create_remote_file('/etc/pki/ca-trust/source/anchors/remote_content.crt')
+        .with(
+          source: 'https://www.example.com/test',
+          user: 'root'
+        )
+    end
+    it 'correctly creates certificates from inline content' do
+      expect(centos_7).to create_file('/etc/pki/ca-trust/source/anchors/inline_content.crt')
+        .with(
+          content: "--------------BEGIN CERTIFICATE---------------------\nfobarbizabaz",
+          user: 'root'
+        )
+      expect(centos_7).to render_file('/etc/pki/ca-trust/source/anchors/inline_content.crt').with_content("--------------BEGIN CERTIFICATE---------------------\nfobarbizabaz")
+    end
+  end
 end
