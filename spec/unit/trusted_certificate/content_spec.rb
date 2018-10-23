@@ -28,13 +28,13 @@ describe 'test::content' do
   end
 
   context 'compiling the recipe' do
-    it 'creates create_trusted_certificate[remote_content]' do
+    it 'creates trusted_certificate[remote_content]' do
       expect(centos_7).to create_trusted_certificate('remote_content')
     end
-    it 'creates create_trusted_certificate[cookbook_file_content]' do
+    it 'creates trusted_certificate[cookbook_file_content]' do
       expect(centos_7).to create_trusted_certificate('cookbook_file_content')
     end
-    it 'creates create_trusted_certificate[inline_content]' do
+    it 'creates trusted_certificate[inline_content]' do
       expect(centos_7).to create_trusted_certificate('inline_content')
     end
   end
@@ -48,7 +48,7 @@ describe 'test::content' do
           user: 'root'
         )
     end
-    it 'correctly certificates from remote_files' do
+    it 'correctly creates certificates from remote_files' do
       expect(centos_7).to create_remote_file('/etc/pki/ca-trust/source/anchors/remote_content.crt')
         .with(
           source: 'https://www.example.com/test',
