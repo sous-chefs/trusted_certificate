@@ -28,12 +28,32 @@ action :create do
     action :nothing
   end
 
-  file "#{certificate_path}/#{new_resource.certificate_name}.crt" do
-    content new_resource.content
-    owner 'root'
-    group 'staff' if platform_family?('debian')
-    action :create
-    notifies :run, 'execute[update trusted certificates]'
+  if new_resource.content.start_with?('cookbook_file://')
+    src = new_resource.content.split('://')[1].split('::')
+    cookbook_file "#{certificate_path}/#{new_resource.certificate_name}.crt" do
+      sensitive new_resource.sensitive if new_resource.sensitive
+      source src[-1]
+      cookbook (src.length == 2 ? src[0] : cookbook_name)
+      owner 'root'
+      group 'staff' if platform_family?('debian')
+      notifies :run, 'execute[update trusted certificates]'
+    end
+  elsif new_resource.content =~ %r{^[a-zA-Z]*://.*}
+    remote_file "#{certificate_path}/#{new_resource.certificate_name}.crt" do
+      sensitive new_resource.sensitive if new_resource.sensitive
+      source new_resource.content
+      owner 'root'
+      group 'staff' if platform_family?('debian')
+      notifies :run, 'execute[update trusted certificates]'
+    end
+  else
+    file "#{certificate_path}/#{new_resource.certificate_name}.crt" do
+      content new_resource.content
+      owner 'root'
+      group 'staff' if platform_family?('debian')
+      action :create
+      notifies :run, 'execute[update trusted certificates]'
+    end
   end
 end
 
