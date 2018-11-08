@@ -24,7 +24,7 @@ provides :trusted_certificate
 
 action :create do
   execute 'update trusted certificates' do
-    command platform_family?('debian', 'suse') ? 'update-ca-certificates' : 'update-ca-trust extract'
+    command update_cert_command
     action :nothing
   end
 
@@ -59,7 +59,7 @@ end
 
 action :delete do
   execute 'update trusted certificates' do
-    command platform_family?('debian', 'suse') ? 'update-ca-certificates' : 'update-ca-trust extract'
+    command update_cert_command
     action :nothing
   end
 
@@ -70,6 +70,12 @@ action :delete do
 end
 
 action_class do
+  # @return [String] the platform specific command to update certs
+  def update_cert_command
+    platform_family?('debian', 'suse') ? 'update-ca-certificates' : 'update-ca-trust extract'
+  end
+
+  # @return [String] the platform specific path to certs
   def certificate_path
     case node['platform_family']
     when 'debian'
