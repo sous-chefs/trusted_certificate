@@ -33,7 +33,7 @@ Adds a certificate to the operating system's trust store.
 
 #### properties
 
-- `content`: The contents of the cert to add
+- `content`: The contents of the cert to add.  This can be specfied as inline content, a URL to a remote file, or a cookbook_file included in a wrapper cookbook.
 - `certificate_name`: The filename of the cert
 
 #### actions
@@ -43,12 +43,34 @@ Adds a certificate to the operating system's trust store.
 
 #### example
 
+Create certificate from inline content:
+
 ```ruby
 trusted_certificate 'my_corp' do
   action :create
   content 'THIS_WOULD_BE_THE_WHOLE_CERT_CONTENTS'
 end
 ```
+
+Download from a remote location:
+
+```ruby
+trusted_certificate 'my_corp_remote' do
+  action :create
+  content 'http://www.example.com/my_corp_remote.crt'
+end
+```
+
+Create cert from file included in a wrapper cookbook:
+
+```ruby
+trusted_certificate 'my_corp_cert_wrapper' do
+  action :create
+  content 'cookbook_file://my_trusted_certs::my_corp_cert.crt'
+end
+```
+
+Delete a certificate from the chain:
 
 ```ruby
 trusted_certificate 'my_corp' do
