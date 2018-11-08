@@ -1,4 +1,4 @@
-apt_update 'update' if platform_family?('debian')
+apt_update 'update'
 
 include_recipe 'trusted_certificate::default'
 
@@ -18,4 +18,17 @@ end
 trusted_certificate 'Web Server (self-signed)' do
   certificate_name 'self_signed_example'
   action :delete
+end
+
+trusted_certificate 'cookbook_file_content' do
+  content 'self_signed_example.crt'
+  cookbook 'example'
+  action :create
+end
+
+file '/self_signed_example.crt'
+
+trusted_certificate 'local_file_content' do
+  content '/self_signed_example.crt'
+  action :create
 end

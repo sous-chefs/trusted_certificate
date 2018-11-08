@@ -4,7 +4,7 @@ trusted_certificate 'remote_content' do
 end
 
 trusted_certificate 'cookbook_file_content' do
-  content 'cookbook_file://test::testfile'
+  content 'self_signed_example.crt'
   action :create
 end
 

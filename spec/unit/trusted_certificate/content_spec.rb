@@ -18,7 +18,7 @@
 
 require 'spec_helper'
 
-describe 'test::content' do
+describe 'example::content' do
   cached(:centos_7) do
     ChefSpec::ServerRunner.new(
       step_into: 'trusted_certificate',

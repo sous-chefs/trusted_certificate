@@ -19,6 +19,7 @@
 
 property :certificate_name, String, name_property: true
 property :content, String, required: true
+property :cookbook, String, default: lazy { cookbook_name }
 
 provides :trusted_certificate
 
@@ -28,32 +29,17 @@ action :create do
     action :nothing
   end
 
-  if new_resource.content.start_with?('cookbook_file://')
-    src = new_resource.content.split('://')[1].split('::')
-    cookbook_file "#{certificate_path}/#{new_resource.certificate_name}.crt" do
-      sensitive new_resource.sensitive if new_resource.sensitive
-      source src[-1]
-      cookbook src.length == 2 ? src[0] : cookbook_name
-      owner 'root'
-      group 'staff' if platform_family?('debian')
-      notifies :run, 'execute[update trusted certificates]'
-    end
-  elsif new_resource.content =~ %r{^[a-zA-Z]*://.*}
-    remote_file "#{certificate_path}/#{new_resource.certificate_name}.crt" do
-      sensitive new_resource.sensitive if new_resource.sensitive
-      source new_resource.content
-      owner 'root'
-      group 'staff' if platform_family?('debian')
-      notifies :run, 'execute[update trusted certificates]'
-    end
-  else
-    file "#{certificate_path}/#{new_resource.certificate_name}.crt" do
-      content new_resource.content
-      owner 'root'
-      group 'staff' if platform_family?('debian')
-      action :create
-      notifies :run, 'execute[update trusted certificates]'
-    end
+  resource_type = fetching_resource(new_resource.content)
+
+  declare_resource(resource_type, "#{certificate_path}/#{new_resource.certificate_name}.crt") do
+    content new_resource.content if resource_type == :file # source directly from content property
+    source source_uri if resource_type == :remote_file # source from a URI
+    source new_resource.content if resource_type == :cookbook_file # content is a filename in a cookbook
+    cookbook new_resource.cookbook if resource_type == :cookbook_file
+    owner 'root'
+    group 'staff' if platform_family?('debian')
+    action :create
+    notifies :run, 'execute[update trusted certificates]'
   end
 end
 
@@ -70,6 +56,41 @@ action :delete do
 end
 
 action_class do
+  def source_uri
+    new_resource.content.start_with?('/') ? "file://#{new_resource.content}" : new_resource.content
+  end
+
+  # determine if a cookbook file is available in the run
+  # @param [String] fn the path to the cookbook file
+  #
+  # @return [Boolean] cookbook file exists or doesn't
+  def has_cookbook_file?(fn) # rubocop: disable Naming/PredicateName
+    run_context.has_cookbook_file_in_cookbook?(new_resource.cookbook, fn)
+  end
+
+  # Given the provided cert URI determine what kind of chef resource we need to fetch the cert
+  # @param [String] uri the uri of the cert (local path, http URL, or the actual cert)
+  #
+  # @raise [Chef::Exceptions::FileNotFound] Cert isn't valid, local, remote or found in the current run
+  #
+  # @return [Symbol] :remote_file or :cookbook_file
+  def fetching_resource(uri)
+    if /.*-----BEGIN CERTIFICATE-----.*/.match?(uri)
+      :file
+    elsif %r{^[a-zA-Z]*://.*}.match?(uri)
+      Chef::Log.debug('#cert_type: The content looks like a URI. Using remote_file to fetch.')
+      :remote_file
+    elsif uri.start_with?('/') && ::File.exist?(uri)
+      Chef::Log.debug('#cert_type: The content looks like a local file. Using remote_file to copy.')
+      :remote_file
+    elsif has_cookbook_file?(uri) # file in a cookbook
+      Chef::Log.debug('#cert_type: The content looks like the name of a cookbook file. Using cookbook_file to fetch.')
+      :cookbook_file
+    else
+      raise Chef::Exceptions::FileNotFound, 'Content does not appear to be a certificate, a URI, a local path, or a cookbook file. Cannot continue!'
+    end
+  end
+
   # @return [String] the platform specific command to update certs
   def update_cert_command
     platform_family?('debian', 'suse') ? 'update-ca-certificates' : 'update-ca-trust extract'
