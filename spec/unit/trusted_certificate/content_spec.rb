@@ -2,7 +2,7 @@
 # Cookbook:: trusted_certificate
 # Spec:: content
 #
-# Copyright 2016 Chef Software Inc
+# Copyright:: 2016 Chef Software Inc
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ describe 'test::content' do
     ChefSpec::ServerRunner.new(
       step_into: 'trusted_certificate',
       platform: 'centos',
-      version: '7.3.1611'
+      version: '7'
     ).converge(described_recipe)
   end
 
