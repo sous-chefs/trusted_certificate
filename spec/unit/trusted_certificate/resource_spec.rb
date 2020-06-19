@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'example::default' do
+describe 'example::example_default' do
   let(:custom_root_ca) do
     ::File.read(::File.join('spec', 'fixtures', 'data', 'custom_root_ca.crt'))
   end
@@ -63,7 +63,7 @@ describe 'example::default' do
   end
 end
 
-describe 'example::delete' do
+describe 'example::example_delete' do
   context 'debian platform family' do
     let(:chef_run) do
       ChefSpec::SoloRunner.new(

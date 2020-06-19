@@ -20,4 +20,6 @@ platforms:
 
 suites:
   - name: default
-    run_list: test::default
+    named_run_list: test::default
+  - name: content
+    named_run_list: test::content

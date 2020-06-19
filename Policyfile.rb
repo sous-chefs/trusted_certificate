@@ -7,10 +7,10 @@
 name 'trusted_certificate'
 
 # Where to find external cookbooks:
-default_source :supermarket
+default_source :chef_repo, '.'
 
 # run_list: chef-client will run these recipes in the order specified.
-run_list 'trusted_certificate::default'
+run_list 'trusted_certificate'
 
 # Specify a custom source for a single cookbook:
 cookbook 'trusted_certificate', path: '.'
