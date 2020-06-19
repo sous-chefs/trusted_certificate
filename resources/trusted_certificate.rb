@@ -18,11 +18,12 @@
 #
 
 property :certificate_name, String, name_property: true
-property :content, String, required: true
+property :content, String
 
 provides :trusted_certificate
 
 action :create do
+  raise '"content" property must be set for action :create on trusted_certificate' unless new_resource.content
   execute 'update trusted certificates' do
     command update_cert_command
     action :nothing
