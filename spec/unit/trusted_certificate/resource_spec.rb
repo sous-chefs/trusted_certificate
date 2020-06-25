@@ -41,7 +41,7 @@ describe 'example::example_default' do
     let(:chef_run) do
       ChefSpec::SoloRunner.new(
         platform: 'centos',
-        version: '6.9',
+        version: '6',
         step_into: 'trusted_certificate'
       ).converge(described_recipe)
     end
@@ -89,7 +89,7 @@ describe 'example::example_delete' do
     let(:chef_run) do
       ChefSpec::SoloRunner.new(
         platform: 'centos',
-        version: '6.9',
+        version: '6',
         step_into: 'trusted_certificate'
       ).converge(described_recipe)
     end

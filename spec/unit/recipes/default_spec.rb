@@ -1,9 +1,7 @@
-require 'spec_helper'
+require 'chefspec'
 
 describe 'trusted_certificate::default' do
-  let(:chef_run) { ChefSpec::SoloRunner.converge(described_recipe) }
+  platform 'centos', '7'
 
-  it 'installs ca-certificates' do
-    expect(chef_run).to install_package('ca-certificates')
-  end
+  it { is_expected.to install_package('ca-certificates') }
 end

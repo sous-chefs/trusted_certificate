@@ -38,14 +38,13 @@
 
           suite:
             - 'default'
-            - 'content'
 
         fail-fast: false
 
       steps:
         - name: Check out code
           uses: actions/checkout@master
-        - name: Install Chef
+        - name: Install Chef Infra
           uses: actionshub/chef-install@master
         - name: Dokken
           uses: actionshub/kitchen-dokken@master

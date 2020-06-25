@@ -24,5 +24,6 @@ platforms:
 
 suites:
   - name: default
+    named_run_list: default
   - name: content
     named_run_list: content
