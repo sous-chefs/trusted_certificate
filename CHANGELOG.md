@@ -2,6 +2,21 @@
 
 This file is used to list changes made in each version of the trusted_certificate cookbook.
 
+## 3.3.0 (2020-06-24)
+
+- Update to enable installation of certs via URL or cookbook_file in wrapper cookbook - [@qubitrenegade](https://github.com/qubitrenegade)
+- Move the cert update logic into a helper method - [@tas50](https://github.com/tas50)
+- Update and expand testing - [@tas50](https://github.com/tas50)
+- Remove the mention of the ChefSpec matcher - [@tas50](https://github.com/tas50)
+- Remove the .foodcritic file - [@tas50](https://github.com/tas50)
+- Require Chef 12.15+ - [@tas50](https://github.com/tas50)
+- Switch to Policyfile instead of Berkshelf - [@collinmcneese](https://github.com/collinmcneese)
+- Replace Travis CI testing with GitHub Actions - [@collinmcneese](https://github.com/collinmcneese)
+- updates trusted_certificate resource for property content - [@collinmcneese](https://github.com/collinmcneese)
+- fixes unit test for content with new resource data - [@collinmcneese](https://github.com/collinmcneese)
+- updates content property to be required only for create action - [@collinmcneese](https://github.com/collinmcneese)
+- Make sure the resource loads on chef < 16 + other fixes - [@tas50](https://github.com/tas50)
+
 ## 3.2.0 (2018-04-06)
 
 - Added a new :delete action

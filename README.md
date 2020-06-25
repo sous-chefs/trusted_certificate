@@ -1,6 +1,7 @@
 # trusted_certificate cookbook
 
-[![Build Status](https://travis-ci.org/chef-cookbooks/trusted_certificate.svg?branch=master)](https://travis-ci.org/chef-cookbooks/trusted_certificate) [![Cookbook Version](https://img.shields.io/cookbook/v/trusted_certificate.svg)](https://supermarket.chef.io/cookbooks/trusted_certificate)
+![delivery](https://github.com/chef-cookbooks/trusted_certificate/workflows/delivery/badge.svg)
+[![Cookbook Version](https://img.shields.io/cookbook/v/trusted_certificate.svg)](https://supermarket.chef.io/cookbooks/trusted_certificate)
 
 This cookbook provides a `trusted_certificate` resource to manage adding SSL/TLS certificates to the operating system's trust store.
 
@@ -13,7 +14,7 @@ This cookbook provides a `trusted_certificate` resource to manage adding SSL/TLS
 
 ### Chef
 
-- Chef 12.7+
+- Chef 12.15+
 
 ### Cookbooks
 
