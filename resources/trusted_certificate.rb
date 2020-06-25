@@ -2,7 +2,7 @@
 # Cookbook:: trusted_certicate
 # resource:: trusted_certicate
 #
-# Copyright:: 2015-2019, Chef Software, Inc.
+# Copyright:: Chef Software, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,10 +17,11 @@
 # limitations under the License.
 #
 
+resource_name :trusted_certificate
+provides :trusted_certificate
+
 property :certificate_name, String, name_property: true
 property :content, String, required: [:create]
-
-provides :trusted_certificate
 
 action :create do
   execute 'update trusted certificates' do
