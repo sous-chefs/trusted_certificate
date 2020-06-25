@@ -51,7 +51,7 @@ describe 'test::content' do
     it 'correctly creates certificates from remote_files' do
       expect(centos_7).to create_remote_file('/etc/pki/ca-trust/source/anchors/remote_content.crt')
         .with(
-          source: 'https://www.example.com/test',
+          source: 'https://cacerts.digicert.com/DigiCertAssuredIDCA-1.crt',
           user: 'root'
         )
     end

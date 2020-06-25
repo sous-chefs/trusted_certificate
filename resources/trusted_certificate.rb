@@ -18,7 +18,7 @@
 #
 
 property :certificate_name, String, name_property: true
-property :content, String, required: true
+property :content, String, required: [:create]
 
 provides :trusted_certificate
 
