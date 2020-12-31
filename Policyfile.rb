@@ -29,4 +29,3 @@ examples.each do |example|
   example = example.gsub('.rb', '')
   named_run_list :"#{example.to_sym}", "example::#{example}"
 end
-
