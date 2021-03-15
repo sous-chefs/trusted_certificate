@@ -22,7 +22,6 @@ platforms:
 
 suites:
   - name: default
-    run_list:
-      - recipe[trusted_certificate::default]
+    named_run_list: default
   - name: content
-      - recipe[trusted_certificate::content]
+    named_run_list: content
