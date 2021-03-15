@@ -25,4 +25,4 @@ suites:
     run_list:
       - recipe[trusted_certificate::default]
   - name: content
-    named_run_list: content
+      - recipe[trusted_certificate::content]
