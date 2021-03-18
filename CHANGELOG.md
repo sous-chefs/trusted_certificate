@@ -2,7 +2,7 @@
 
 This file is used to list changes made in each version of the trusted_certificate cookbook.
 
-## Unreleased
+## 3.4.0 - *2021-03-18*
 
 - Sous Chefs Adoption
 - Add InSpec tests
