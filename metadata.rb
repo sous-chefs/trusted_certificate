@@ -1,15 +1,21 @@
-name 'trusted_certificate'
-maintainer 'Chef Software, Inc.'
-maintainer_email 'cookbooks@chef.io'
-license 'Apache-2.0'
-description 'Manages adding certificates to the OS trust store'
+name              'trusted_certificate'
+maintainer        'Sous Chefs'
+maintainer_email  'help@sous-chefs.org'
+license           'Apache-2.0'
+description       'Manages adding certificates to the OS trust store'
+version           '3.3.0'
+source_url        'https://github.com/sous-chefs/trusted_certificate'
+issues_url        'https://github.com/sous-chefs/trusted_certificate/issues'
+chef_version      '>= 12.15'
 
-version '3.3.0'
-
-%w(ubuntu debian redhat centos suse opensuse opensuseleap scientific oracle amazon zlinux).each do |os|
-  supports os
-end
-
-source_url 'https://github.com/chef-cookbooks/trusted_certificate'
-issues_url 'https://github.com/chef-cookbooks/trusted_certificate/issues'
-chef_version '>= 12.15'
+supports 'ubuntu'
+supports 'debian'
+supports 'redhat'
+supports 'centos'
+supports 'suse'
+supports 'opensuse'
+supports 'opensuseleap'
+supports 'scientific'
+supports 'oracle'
+supports 'amazon'
+supports 'zlinux'

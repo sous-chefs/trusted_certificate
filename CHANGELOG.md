@@ -2,6 +2,11 @@
 
 This file is used to list changes made in each version of the trusted_certificate cookbook.
 
+## Unreleased
+
+- Sous Chefs Adoption
+- Add InSpec tests
+
 ## 3.3.0 (2020-06-24)
 
 - Update to enable installation of certs via URL or cookbook_file in wrapper cookbook - [@qubitrenegade](https://github.com/qubitrenegade)
