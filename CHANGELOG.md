@@ -4,6 +4,8 @@ This file is used to list changes made in each version of the trusted_certificat
 
 ## Unreleased
 
+- Add sensitive property to certificate sourced from content passed to the resource - [@bmhughes](https://github.com/bmhughes)
+
 ## 3.4.0 - *2021-03-18*
 
 - Sous Chefs Adoption

@@ -22,6 +22,7 @@ provides :trusted_certificate
 
 property :certificate_name, String, name_property: true
 property :content, String, required: [:create]
+property :sensitive, [true, false], default: true
 
 action :create do
   execute 'update trusted certificates' do
@@ -32,7 +33,7 @@ action :create do
   if new_resource.content.start_with?('cookbook_file://')
     src = new_resource.content.split('://')[1].split('::')
     cookbook_file "#{certificate_path}/#{new_resource.certificate_name}.crt" do
-      sensitive new_resource.sensitive if new_resource.sensitive
+      sensitive new_resource.sensitive
       source src[-1]
       cookbook src.length == 2 ? src[0] : cookbook_name
       owner 'root'
@@ -41,7 +42,7 @@ action :create do
     end
   elsif new_resource.content =~ %r{^[a-zA-Z]*://.*}
     remote_file "#{certificate_path}/#{new_resource.certificate_name}.crt" do
-      sensitive new_resource.sensitive if new_resource.sensitive
+      sensitive new_resource.sensitive
       source new_resource.content
       owner 'root'
       group 'staff' if platform_family?('debian')
@@ -49,6 +50,7 @@ action :create do
     end
   else
     file "#{certificate_path}/#{new_resource.certificate_name}.crt" do
+      sensitive new_resource.sensitive
       content new_resource.content
       owner 'root'
       group 'staff' if platform_family?('debian')
