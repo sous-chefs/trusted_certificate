@@ -2,7 +2,7 @@
 
 This file is used to list changes made in each version of the trusted_certificate cookbook.
 
-## Unreleased
+## 3.5.0 - *2021-03-22*
 
 - Add sensitive property to certificate sourced from content passed to the resource - [@bmhughes](https://github.com/bmhughes)
 
