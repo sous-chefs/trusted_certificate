@@ -6,7 +6,7 @@ description       'Manages adding certificates to the OS trust store'
 version           '3.5.0'
 source_url        'https://github.com/sous-chefs/trusted_certificate'
 issues_url        'https://github.com/sous-chefs/trusted_certificate/issues'
-chef_version      '>= 12.15'
+chef_version      '>= 15.3'
 
 supports 'ubuntu'
 supports 'debian'
