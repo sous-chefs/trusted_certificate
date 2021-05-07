@@ -17,6 +17,8 @@
 # limitations under the License.
 #
 
+unified_mode true
+
 resource_name :trusted_certificate
 provides :trusted_certificate
 
