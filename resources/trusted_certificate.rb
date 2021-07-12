@@ -23,19 +23,9 @@ resource_name :trusted_certificate
 provides :trusted_certificate
 
 property :certificate_name, String, name_property: true
+property :certificates_dir, String, default: lazy { certificate_default_dir }
 property :content, String, required: [:create]
 property :sensitive, [true, false], default: true
-
-property :certificates_dir, String, default: lazy {
-  case node['platform_family']
-  when 'debian'
-    '/usr/local/share/ca-certificates'
-  when 'suse'
-    '/etc/pki/trust/anchors/'
-  else # probably RHEL
-    '/etc/pki/ca-trust/source/anchors'
-  end
-}
 
 def certificate_path
   "#{certificates_dir}/#{certificate_name}.crt"
@@ -59,7 +49,7 @@ action :create do
     end
   elsif new_resource.content =~ %r{^[a-zA-Z]*://.*}
     remote_file certificate_path do
-      sensitive new_resource.sensitive if new_resource.sensitive
+      sensitive new_resource.sensitive
       source new_resource.content
       owner 'root'
       group 'staff' if platform_family?('debian')
@@ -92,5 +82,17 @@ action_class do
   # @return [String] the platform specific command to update certs
   def update_cert_command
     platform_family?('debian', 'suse') ? 'update-ca-certificates' : 'update-ca-trust extract'
+  end
+
+  # @return [String] the platform specific path to certs
+  def certificate_default_dir
+    case node['platform_family']
+    when 'debian'
+      '/usr/local/share/ca-certificates'
+    when 'suse'
+      '/etc/pki/trust/anchors/'
+    else # probably RHEL
+      '/etc/pki/ca-trust/source/anchors'
+    end
   end
 end
