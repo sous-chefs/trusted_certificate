@@ -27,6 +27,8 @@ property :certificates_dir, String, default: lazy { certificate_default_dir }
 property :content, String, required: [:create]
 property :sensitive, [true, false], default: true
 
+# Allows reading the path from "outside" of the resource.
+# See https://github.com/sous-chefs/trusted_certificate/issues/20
 def certificate_path
   "#{certificates_dir}/#{certificate_name}.crt"
 end
