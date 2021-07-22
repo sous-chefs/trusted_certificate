@@ -2,7 +2,7 @@
 
 This file is used to list changes made in each version of the trusted_certificate cookbook.
 
-## Unreleased
+## 4.0.2 - *2021-07-22*
 
 ## 4.0.1 - *2021-06-01*
 
