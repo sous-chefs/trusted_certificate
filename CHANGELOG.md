@@ -4,11 +4,19 @@ This file is used to list changes made in each version of the trusted_certificat
 
 ## Unreleased
 
+- Standardise files with files in sous-chefs/repo-management
+
 ## 4.0.2 - *2021-07-22*
+
+- Update README.md
 
 ## 4.0.1 - *2021-06-01*
 
+- Standardise files with files in sous-chefs/repo-management
+
 ## 4.0.0 - *2021-05-07*
+
+- `trusted_certificate` Resource enable `unified_mode`
 
 ## 3.5.0 - *2021-03-22*
 
