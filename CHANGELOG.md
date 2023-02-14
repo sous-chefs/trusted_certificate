@@ -4,6 +4,8 @@ This file is used to list changes made in each version of the trusted_certificat
 
 ## Unreleased
 
+## 4.0.4 - *2023-02-14*
+
 - resolved cookstyle error: .delivery/project.toml:2:8 convention: `Style/StringLiterals`
 - resolved cookstyle error: .delivery/project.toml:4:10 convention: `Style/StringLiterals`
 - resolved cookstyle error: .delivery/project.toml:5:13 convention: `Style/StringLiterals`
