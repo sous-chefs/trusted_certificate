@@ -2,6 +2,8 @@
 
 This file is used to list changes made in each version of the trusted_certificate cookbook.
 
+## Unreleased
+
 ## 4.0.6 - *2023-04-04*
 
 - Standardise files with files in sous-chefs/repo-management
