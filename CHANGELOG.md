@@ -4,7 +4,12 @@ This file is used to list changes made in each version of the trusted_certificat
 
 ## Unreleased
 
+- Update actions/checkout action to v3
+- Update tested platforms on CI
+
 ## 4.0.7 - *2023-05-17*
+
+- Update sous-chefs/.github action to v2.0.4
 
 ## 4.0.6 - *2023-04-04*
 

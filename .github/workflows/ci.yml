@@ -24,17 +24,18 @@ jobs:
     strategy:
       matrix:
         os:
-          - "amazonlinux-2"
-          - "debian-9"
-          - "debian-10"
+          - "amazonlinux-2023"
           - "centos-7"
-          - "centos-8"
+          - "centos-stream-8"
+          - "debian-10"
+          - "debian-11"
+          - "fedora-latest"
+          - "opensuse-leap-15"
           - "oraclelinux-7"
           - "oraclelinux-8"
-          - "fedora-latest"
           - "ubuntu-1804"
           - "ubuntu-2004"
-          - "opensuse-leap-15"
+          - "ubuntu-2204"
         suite:
           - "default"
           - "content"
