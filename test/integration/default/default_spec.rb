@@ -1,12 +1,12 @@
 certificate_path =
-case os.family
-when 'debian'
-  '/usr/local/share/ca-certificates'
-when 'suse'
-  '/etc/pki/trust/anchors/'
-else # probably RHEL
-  '/etc/pki/ca-trust/source/anchors'
-end
+  case os.family
+  when 'debian'
+    '/usr/local/share/ca-certificates'
+  when 'suse'
+    '/etc/pki/trust/anchors/'
+  else # probably RHEL
+    '/etc/pki/ca-trust/source/anchors'
+  end
 
 describe file("#{certificate_path}/custom_root_ca.crt") do
   it { should exist }

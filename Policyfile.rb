@@ -18,13 +18,13 @@ cookbook 'test', path: './test/fixtures/cookbooks/test'
 cookbook 'example', path: './spec/fixtures/cookbooks/example'
 
 # Create named run list entries for each of recipes in testing cookbooks
-tests = (Dir.entries('./test/fixtures/cookbooks/test/recipes').select { |f| !File.directory? f })
+tests = Dir.entries('./test/fixtures/cookbooks/test/recipes').select { |f| !File.directory? f }
 tests.each do |test|
   test = test.gsub('.rb', '')
   named_run_list :"#{test.to_sym}", "test::#{test}"
 end
 
-examples = (Dir.entries('./spec/fixtures/cookbooks/example/recipes').select { |f| !File.directory? f })
+examples = Dir.entries('./spec/fixtures/cookbooks/example/recipes').select { |f| !File.directory? f }
 examples.each do |example|
   example = example.gsub('.rb', '')
   named_run_list :"#{example.to_sym}", "example::#{example}"
