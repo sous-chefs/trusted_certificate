@@ -2,137 +2,119 @@
 
 This file is used to list changes made in each version of the trusted_certificate cookbook.
 
-## Unreleased
-
-## 4.0.16 - *2025-09-04*
-
-## 4.0.15 - *2024-05-02*
-
-## 4.0.14 - *2024-05-01*
-
-## 4.0.13 - *2023-12-21*
-
-## 4.0.12 - *2023-10-31*
-
-## 4.0.11 - *2023-10-03*
-
-## 4.0.10 - *2023-10-03*
-
-## 4.0.9 - *2023-07-10*
-
 ## 4.0.8 - *2023-05-17*
 
-- Update actions/checkout action to v3
-- Update tested platforms on CI
+* Update actions/checkout action to v3
+* Update tested platforms on CI
 
 ## 4.0.7 - *2023-05-17*
 
-- Update sous-chefs/.github action to v2.0.4
+* Update sous-chefs/.github action to v2.0.4
 
 ## 4.0.6 - *2023-04-04*
 
-- Standardise files with files in sous-chefs/repo-management
+* Standardise files with files in sous-chefs/repo-management
 
 ## 4.0.5 - *2023-02-14*
 
-- Standardise files with files in sous-chefs/repo-management
+* Standardise files with files in sous-chefs/repo-management
 
 ## 4.0.4 - *2023-02-14*
 
-- resolved cookstyle error: .delivery/project.toml:2:8 convention: `Style/StringLiterals`
-- resolved cookstyle error: .delivery/project.toml:4:10 convention: `Style/StringLiterals`
-- resolved cookstyle error: .delivery/project.toml:5:13 convention: `Style/StringLiterals`
-- resolved cookstyle error: .delivery/project.toml:6:10 convention: `Style/StringLiterals`
-- resolved cookstyle error: .delivery/project.toml:7:9 convention: `Style/StringLiterals`
-- resolved cookstyle error: .delivery/project.toml:8:14 convention: `Style/StringLiterals`
-- resolved cookstyle error: .delivery/project.toml:9:11 convention: `Style/StringLiterals`
+* resolved cookstyle error: .delivery/project.toml:2:8 convention: `Style/StringLiterals`
+* resolved cookstyle error: .delivery/project.toml:4:10 convention: `Style/StringLiterals`
+* resolved cookstyle error: .delivery/project.toml:5:13 convention: `Style/StringLiterals`
+* resolved cookstyle error: .delivery/project.toml:6:10 convention: `Style/StringLiterals`
+* resolved cookstyle error: .delivery/project.toml:7:9 convention: `Style/StringLiterals`
+* resolved cookstyle error: .delivery/project.toml:8:14 convention: `Style/StringLiterals`
+* resolved cookstyle error: .delivery/project.toml:9:11 convention: `Style/StringLiterals`
 
 ## 4.0.3 - *2021-08-31*
 
-- Standardise files with files in sous-chefs/repo-management
+* Standardise files with files in sous-chefs/repo-management
 
 ## 4.0.2 - *2021-07-22*
 
-- Update README.md
+* Update README.md
 
 ## 4.0.1 - *2021-06-01*
 
-- Standardise files with files in sous-chefs/repo-management
+* Standardise files with files in sous-chefs/repo-management
 
 ## 4.0.0 - *2021-05-07*
 
-- `trusted_certificate` Resource enable `unified_mode`
+* `trusted_certificate` Resource enable `unified_mode`
 
 ## 3.5.0 - *2021-03-22*
 
-- Add sensitive property to certificate sourced from content passed to the resource - [@bmhughes](https://github.com/bmhughes)
+* Add sensitive property to certificate sourced from content passed to the resource - [@bmhughes](https://github.com/bmhughes)
 
 ## 3.4.0 - *2021-03-18*
 
-- Sous Chefs Adoption
-- Add InSpec tests
+* Sous Chefs Adoption
+* Add InSpec tests
 
 ## 3.3.0 (2020-06-24)
 
-- Update to enable installation of certs via URL or cookbook_file in wrapper cookbook - [@qubitrenegade](https://github.com/qubitrenegade)
-- Move the cert update logic into a helper method - [@tas50](https://github.com/tas50)
-- Update and expand testing - [@tas50](https://github.com/tas50)
-- Remove the mention of the ChefSpec matcher - [@tas50](https://github.com/tas50)
-- Remove the .foodcritic file - [@tas50](https://github.com/tas50)
-- Require Chef 12.15+ - [@tas50](https://github.com/tas50)
-- Switch to Policyfile instead of Berkshelf - [@collinmcneese](https://github.com/collinmcneese)
-- Replace Travis CI testing with GitHub Actions - [@collinmcneese](https://github.com/collinmcneese)
-- updates trusted_certificate resource for property content - [@collinmcneese](https://github.com/collinmcneese)
-- fixes unit test for content with new resource data - [@collinmcneese](https://github.com/collinmcneese)
-- updates content property to be required only for create action - [@collinmcneese](https://github.com/collinmcneese)
-- Make sure the resource loads on chef < 16 + other fixes - [@tas50](https://github.com/tas50)
+* Update to enable installation of certs via URL or cookbook_file in wrapper cookbook - [@qubitrenegade](https://github.com/qubitrenegade)
+* Move the cert update logic into a helper method - [@tas50](https://github.com/tas50)
+* Update and expand testing - [@tas50](https://github.com/tas50)
+* Remove the mention of the ChefSpec matcher - [@tas50](https://github.com/tas50)
+* Remove the .foodcritic file - [@tas50](https://github.com/tas50)
+* Require Chef 12.15+ - [@tas50](https://github.com/tas50)
+* Switch to Policyfile instead of Berkshelf - [@collinmcneese](https://github.com/collinmcneese)
+* Replace Travis CI testing with GitHub Actions - [@collinmcneese](https://github.com/collinmcneese)
+* updates trusted_certificate resource for property content - [@collinmcneese](https://github.com/collinmcneese)
+* fixes unit test for content with new resource data - [@collinmcneese](https://github.com/collinmcneese)
+* updates content property to be required only for create action - [@collinmcneese](https://github.com/collinmcneese)
+* Make sure the resource loads on chef < 16 + other fixes - [@tas50](https://github.com/tas50)
 
 ## 3.2.0 (2018-04-06)
 
-- Added a new :delete action
-- Removed Chefspec matchers that are now autogenerated by Chefspec
+* Added a new :delete action
+* Removed Chefspec matchers that are now autogenerated by Chefspec
 
 ## 3.1.1 (2017-06-28)
 
-- Avoid deprecation warning in the Chefspecs
-- Remove unnecessary required on the name property
-- Remove the converge_by that's causing converges on every run
+* Avoid deprecation warning in the Chefspecs
+* Remove unnecessary required on the name property
+* Remove the converge_by that's causing converges on every run
 
 ## 3.1.0 (2017-05-30)
 
-- name_attribute -> name_property in the custom resource
-- Remove class_eval usage and require Chef 12.7+ to resolve failures on later Chef 12 releases
+* name_attribute -> name_property in the custom resource
+* Remove class_eval usage and require Chef 12.7+ to resolve failures on later Chef 12 releases
 
 ## 3.0.1 (2017-03-21)
 
-- Test with Local Delivery instead of Rake
-- Fix method missing errors on older Chef clients
+* Test with Local Delivery instead of Rake
+* Fix method missing errors on older Chef clients
 
 ## 3.0.0 (2017-02-15)
 
-- Require Chef 12.5+ and remove compat_resource
+* Require Chef 12.5+ and remove compat_resource
 
 ## 2.0.0 (2017-01-04)
 
-- Convert the LWRP to a custom resource
-- Add support for opensuse
+* Convert the LWRP to a custom resource
+* Add support for opensuse
 
 ## 1.0.1 (2017-01-03)
 
-- Remove Chef 11 compatibility in metadata
-- Fix typo in the matcher name
+* Remove Chef 11 compatibility in metadata
+* Fix typo in the matcher name
 
 ## 1.0.0 (2016-08-31)
 
-- Add RHEL support
-- Add Chefspec matcher
-- Add chef_version metadata
-- Change maintainer to Cookbook Team
-- Fix badge URLs
-- Document the provider in the readme
-- Add matchers to the readme
-- Add test cookbook and test the actual provider in Travis
+* Add RHEL support
+* Add Chefspec matcher
+* Add chef_version metadata
+* Change maintainer to Cookbook Team
+* Fix badge URLs
+* Document the provider in the readme
+* Add matchers to the readme
+* Add test cookbook and test the actual provider in Travis
 
 ## v0.1.0
 
-- Initial release
+* Initial release
