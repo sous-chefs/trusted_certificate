@@ -2,6 +2,13 @@
 
 This file is used to list changes made in each version of the trusted_certificate cookbook.
 
+## [4.0.17](https://github.com/sous-chefs/trusted_certificate/compare/4.0.16...v4.0.17) (2025-10-16)
+
+
+### Bug Fixes
+
+* **ci:** Update workflows to use release pipeline ([#65](https://github.com/sous-chefs/trusted_certificate/issues/65)) ([968514b](https://github.com/sous-chefs/trusted_certificate/commit/968514b61050a87f99770583894a2df0734ef308))
+
 ## 4.0.8 - *2023-05-17*
 
 * Update actions/checkout action to v3
