@@ -44,6 +44,8 @@ This file is used to list changes made in each version of the trusted_certificat
 
 * Update README.md
 
+- Expose the path of the installed certificate.
+
 ## 4.0.1 - *2021-06-01*
 
 * Standardise files with files in sous-chefs/repo-management
