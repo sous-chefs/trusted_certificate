@@ -2,6 +2,22 @@
 
 This file is used to list changes made in each version of the trusted_certificate cookbook.
 
+## [5.0.0](https://github.com/sous-chefs/trusted_certificate/compare/v4.0.17...v5.0.0) (2026-05-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* migrate trusted_certificate resources ([#70](https://github.com/sous-chefs/trusted_certificate/issues/70))
+
+### Features
+
+* migrate trusted_certificate resources ([#70](https://github.com/sous-chefs/trusted_certificate/issues/70)) ([835bf24](https://github.com/sous-chefs/trusted_certificate/commit/835bf2420dd15e2a5cea2155f679335dd3dbaa65))
+
+
+### Bug Fixes
+
+* **ci:** Update workflows to use release pipeline ([#65](https://github.com/sous-chefs/trusted_certificate/issues/65)) ([968514b](https://github.com/sous-chefs/trusted_certificate/commit/968514b61050a87f99770583894a2df0734ef308))
+
 ## [4.0.17](https://github.com/sous-chefs/trusted_certificate/compare/4.0.16...v4.0.17) (2025-10-16)
 
 
