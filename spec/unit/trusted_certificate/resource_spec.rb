@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'example::example_default' do
@@ -22,6 +24,7 @@ describe 'example::example_default' do
     end
 
     it 'writes certificate to file on disk' do
+      expect(chef_run).to install_package('ca-certificates')
       expect(chef_run).to create_file('/usr/local/share/ca-certificates/custom_root_ca.crt')
         .with(content: custom_root_ca, owner: 'root', group: 'staff')
       expect(chef_run).to create_file('/usr/local/share/ca-certificates/self_signed_example.crt')
@@ -47,6 +50,7 @@ describe 'example::example_default' do
     end
 
     it 'writes certificate to file on disk' do
+      expect(chef_run).to install_package('ca-certificates')
       expect(chef_run).to create_file('/etc/pki/ca-trust/source/anchors/custom_root_ca.crt')
         .with(content: custom_root_ca, owner: 'root')
       expect(chef_run).to create_file('/etc/pki/ca-trust/source/anchors/self_signed_example.crt')
@@ -106,5 +110,20 @@ describe 'example::example_delete' do
       file = chef_run.file('/etc/pki/ca-trust/source/anchors/custom_root_ca.crt')
       expect(file).to notify('execute[update trusted certificates]').to(:run).delayed
     end
+  end
+end
+
+describe 'trusted_certificate' do
+  step_into :trusted_certificate
+  platform 'ubuntu', '24.04'
+
+  context 'with action :remove' do
+    recipe do
+      trusted_certificate 'custom_root_ca' do
+        action :remove
+      end
+    end
+
+    it { is_expected.to delete_file('/usr/local/share/ca-certificates/custom_root_ca.crt') }
   end
 end

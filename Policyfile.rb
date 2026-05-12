@@ -10,15 +10,17 @@ name 'trusted_certificate'
 default_source :supermarket
 
 # run_list: chef-client will run these recipes in the order specified.
-run_list 'trusted_certificate'
+# The policy run_list points at the primary test cookbook recipe because this
+# cookbook exposes resources only.
+run_list 'test::default'
 
 # Specify a custom source for a single cookbook:
 cookbook 'trusted_certificate', path: '.'
-cookbook 'test', path: './test/fixtures/cookbooks/test'
+cookbook 'test', path: './test/cookbooks/test'
 cookbook 'example', path: './spec/fixtures/cookbooks/example'
 
 # Create named run list entries for each of recipes in testing cookbooks
-tests = Dir.entries('./test/fixtures/cookbooks/test/recipes').select { |f| !File.directory? f }
+tests = Dir.entries('./test/cookbooks/test/recipes').select { |f| !File.directory? f }
 tests.each do |test|
   test = test.gsub('.rb', '')
   named_run_list :"#{test.to_sym}", "test::#{test}"

@@ -27,11 +27,9 @@ This cookbook is maintained by the Sous Chefs. The Sous Chefs are a community of
 
 - none
 
-## Recipes
+## Migration
 
-### default
-
-Installs the `ca-certificates` package that provides the certificate trust mechanism.
+See [migration.md](migration.md) for the custom-resource-only migration guide.
 
 ## Resources
 
@@ -43,11 +41,14 @@ Adds a certificate to the operating system's trust store.
 
 - `content`: The contents of the cert to add.  This can be specfied as inline content, a URL to a remote file, or a cookbook_file included in a wrapper cookbook.
 - `certificate_name`: The filename of the cert
+- `install_ca_certificates`: Install the platform `ca-certificates` package before writing certificates. Defaults to `true`.
+- `sensitive`: Marks managed file resources as sensitive. Defaults to `true`.
 
 #### actions
 
 - `create`
 - `delete`
+- `remove`
 
 #### example
 
