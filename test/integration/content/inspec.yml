@@ -1,0 +1,7 @@
+---
+name: content
+title: trusted_certificate content tests
+maintainer: Sous Chefs
+license: Apache-2.0
+summary: Verifies remote, cookbook file, and inline certificate content.
+version: 1.0.0

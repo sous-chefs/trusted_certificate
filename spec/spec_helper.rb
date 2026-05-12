@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'chefspec'
 require 'chefspec/policyfile'
 
@@ -6,5 +8,5 @@ RSpec.configure do |config|
   config.formatter = :documentation # Use the specified formatter
   config.log_level = :error         # Avoid deprecation notice SPAM
   config.platform = 'ubuntu'        # default to ubuntu unless overriden
-  config.version = '16.04'
+  config.version = '24.04'
 end

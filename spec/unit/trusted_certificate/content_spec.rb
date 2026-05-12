@@ -16,14 +16,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'test::content' do
   cached(:centos_7) do
     ChefSpec::ServerRunner.new(
       step_into: 'trusted_certificate',
-      platform: 'centos',
-      version: '7'
+      platform: 'almalinux',
+      version: '9'
     ).converge(described_recipe)
   end
 

@@ -1,0 +1,7 @@
+---
+name: default
+title: trusted_certificate default tests
+maintainer: Sous Chefs
+license: Apache-2.0
+summary: Verifies inline certificate management.
+version: 1.0.0

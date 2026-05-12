@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 trusted_certificate 'remote_content' do
   content 'https://cacerts.digicert.com/DigiCertAssuredIDCA-1.crt'
   action :create
