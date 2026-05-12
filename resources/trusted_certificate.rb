@@ -4,9 +4,16 @@ provides :trusted_certificate
 unified_mode true
 
 property :certificate_name, String, name_property: true
+property :certificates_dir, String, default: lazy { certificate_default_dir }
 property :content, String, required: [:create]
 property :install_ca_certificates, [true, false], default: true
 property :sensitive, [true, false], default: true
+
+# Allows reading the path from "outside" of the resource.
+# See https://github.com/sous-chefs/trusted_certificate/issues/20
+def certificate_path
+  "#{certificates_dir}/#{certificate_name}.crt"
+end
 
 action :create do
   package ca_certificates_package do
@@ -29,7 +36,7 @@ action :create do
       notifies :run, 'execute[update trusted certificates]'
     end
   elsif new_resource.content =~ %r{^[a-zA-Z]*://.*}
-    remote_file "#{certificate_path}/#{new_resource.certificate_name}.crt" do
+    remote_file certificate_path do
       sensitive new_resource.sensitive
       source new_resource.content
       owner 'root'
@@ -37,8 +44,7 @@ action :create do
       notifies :run, 'execute[update trusted certificates]'
     end
   else
-    file "#{certificate_path}/#{new_resource.certificate_name}.crt" do
-      sensitive new_resource.sensitive
+    file certificate_path do
       content new_resource.content
       owner 'root'
       group 'staff' if platform_family?('debian')
@@ -54,7 +60,7 @@ action :delete do
     action :nothing
   end
 
-  file "#{certificate_path}/#{new_resource.certificate_name}.crt" do
+  file certificate_path do
     action :delete
     notifies :run, 'execute[update trusted certificates]'
   end
@@ -83,7 +89,7 @@ action_class do
   end
 
   # @return [String] the platform specific path to certs
-  def certificate_path
+  def certificate_default_dir
     case node['platform_family']
     when 'debian'
       '/usr/local/share/ca-certificates'
