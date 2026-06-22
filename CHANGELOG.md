@@ -6,6 +6,13 @@ This file is used to list changes made in each version of the trusted_certificat
 
 * Expose the installed certificate path from the `trusted_certificate` resource - [@Lasering](https://github.com/Lasering)
 
+## [5.1.0](https://github.com/sous-chefs/trusted_certificate/compare/v5.0.0...v5.1.0) (2026-06-22)
+
+
+### Features
+
+* expose certificate path ([#78](https://github.com/sous-chefs/trusted_certificate/issues/78)) ([5a9be4e](https://github.com/sous-chefs/trusted_certificate/commit/5a9be4eb85e7d48e2a487547caec789faa8a4a4d))
+
 ## [5.0.0](https://github.com/sous-chefs/trusted_certificate/compare/v4.0.17...v5.0.0) (2026-05-12)
 
 
