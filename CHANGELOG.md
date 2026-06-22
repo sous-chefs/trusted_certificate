@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of the trusted_certificate cookbook.
 
+## Unreleased
+
+* Expose the installed certificate path from the `trusted_certificate` resource - [@Lasering](https://github.com/Lasering)
+
 ## [5.0.0](https://github.com/sous-chefs/trusted_certificate/compare/v4.0.17...v5.0.0) (2026-05-12)
 
 

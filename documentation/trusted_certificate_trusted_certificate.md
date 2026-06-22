@@ -13,9 +13,12 @@ Use the `trusted_certificate` resource to install or remove a certificate from t
 | Property | Type | Default | Description |
 | --- | --- | --- | --- |
 | `certificate_name` | String | resource name | Certificate filename without the `.crt` extension. |
+| `certificates_dir` | String | platform trust store directory | Directory where certificate files are written. |
 | `content` | String | required for `:create` | Inline certificate content, a remote URL, or `cookbook_file://cookbook::path`. |
 | `install_ca_certificates` | true, false | `true` | Install the platform `ca-certificates` package before writing certificates. |
 | `sensitive` | true, false | `true` | Marks managed file resources as sensitive. |
+
+The resource exposes `certificate_path` for wrapper cookbooks that need to read the final installed `.crt` path.
 
 ## Examples
 
@@ -28,6 +31,13 @@ end
 ```ruby
 trusted_certificate 'my_corp_remote' do
   content 'https://www.example.com/my_corp_remote.crt'
+end
+```
+
+```ruby
+trusted_certificate 'my_corp' do
+  certificates_dir '/opt/custom-certs'
+  content 'THIS_WOULD_BE_THE_WHOLE_CERT_CONTENTS'
 end
 ```
 
