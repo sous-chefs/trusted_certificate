@@ -117,6 +117,23 @@ describe 'trusted_certificate' do
   step_into :trusted_certificate
   platform 'ubuntu', '24.04'
 
+  context 'with a custom certificates directory' do
+    recipe do
+      trusted_certificate 'custom_root_ca' do
+        certificates_dir '/opt/custom-certs'
+        content 'CERTIFICATE'
+      end
+    end
+
+    it { is_expected.to create_file('/opt/custom-certs/custom_root_ca.crt') }
+
+    it 'exposes the certificate path on the resource' do
+      resource = chef_run.find_resource(:trusted_certificate, 'custom_root_ca')
+
+      expect(resource.certificate_path).to eq('/opt/custom-certs/custom_root_ca.crt')
+    end
+  end
+
   context 'with action :remove' do
     recipe do
       trusted_certificate 'custom_root_ca' do

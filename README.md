@@ -41,8 +41,11 @@ Adds a certificate to the operating system's trust store.
 
 - `content`: The contents of the cert to add.  This can be specfied as inline content, a URL to a remote file, or a cookbook_file included in a wrapper cookbook.
 - `certificate_name`: The filename of the cert
+- `certificates_dir`: The directory where certificate files are written. Defaults to the platform trust store directory.
 - `install_ca_certificates`: Install the platform `ca-certificates` package before writing certificates. Defaults to `true`.
 - `sensitive`: Marks managed file resources as sensitive. Defaults to `true`.
+
+The resource exposes `certificate_path` for wrapper cookbooks that need to read the final installed `.crt` path.
 
 #### actions
 
