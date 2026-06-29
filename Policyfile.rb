@@ -1,20 +1,11 @@
-# Policyfile.rb - Describe how you want Chef Infra Client to build your system.
-#
-# For more information on the Policyfile feature, visit
-# https://docs.chef.io/policyfile/
+# frozen_string_literal: true
 
-# A name that describes what the system you're building with Chef does.
 name 'trusted_certificate'
 
-# Where to find external cookbooks:
-default_source :supermarket
-
-# run_list: chef-client will run these recipes in the order specified.
 # The policy run_list points at the primary test cookbook recipe because this
 # cookbook exposes resources only.
 run_list 'test::default'
 
-# Specify a custom source for a single cookbook:
 cookbook 'trusted_certificate', path: '.'
 cookbook 'test', path: './test/cookbooks/test'
 cookbook 'example', path: './spec/fixtures/cookbooks/example'
